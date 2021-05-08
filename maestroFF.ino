@@ -1,31 +1,29 @@
 //códifo para leer los valores de los potenciómetros del controlador//
 #include <Servo.h>
-#include <Wire.h>//esto es básicamente el protocolo i2c
+
 
 
 //conectamos el potenciómetro en el analogico A0
-//conectamos el cable de datos del servo al pin 2
+
 //Servo zoom;
 
-int pot1=0;
-byte valor1;
+int pot1=0;// con esto conectamos el poteciómetro al pin analógico A0
+int valor1;//aqui es donde se guarda el valor que leeremos del pot
 
 void setup() {
   Serial.begin(9600);
- // Wire.begin();//inicialización del protocolo i2c
-
   
 }
 
+
 void loop() {
 
-//Wire.beginTransmission(1);
 
-valor1= analogRead(pot1)/4 ;
-//valor1=map(valor1, 0,1023,0,180);
+valor1= analogRead(pot1);
+int valor1map =map(valor1, 0,1023,0,225);
 
-Serial.println(valor1);
-//Wire.write(valor1);
-delay(8);
+Serial.write(valor1);
+
+delay(10);
 
 }
